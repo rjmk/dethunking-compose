@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+'use strict'
+
+var babel = require('babel-core')
+var fs = require('fs')
+
+fs.writeFileSync(
+    __dirname + '/index.js',
+    babel.transformFileSync(__dirname + '/src/index.js'))

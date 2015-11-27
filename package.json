@@ -1,0 +1,35 @@
+{
+  "name": "dethunking_compose",
+  "version": "0.0.0",
+  "description": "Lazy evaluation + compose",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "./build",
+    "test": "babel-tape-runner test/*.test.js"
+  },
+  "keywords": [
+    "thunk",
+    "dethunk",
+    "compose",
+    "lazy",
+    "hoisting"
+  ],
+  "author": "rjmk",
+  "babel": {
+    "plugins": [
+      "transform-es2015-arrow-functions",
+      "babel-plugin-transform-es2015-parameters",
+      "babel-plugin-transform-es2015-spread"
+    ]
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.2.0",
+    "babel-plugin-transform-es2015-arrow-functions": "^6.1.18",
+    "babel-plugin-transform-es2015-parameters": "^6.1.18",
+    "babel-plugin-transform-es2015-spread": "^6.1.18",
+    "babel-tape-runner": "^1.3.0",
+    "tape": "^4.2.2"
+  },
+  "dependencies": {}
+}
