@@ -7,6 +7,10 @@
     "prepublish": "./build",
     "test": "babel-tape-runner test/*.test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rjmk/dethunking-compose.git"
+  },
   "keywords": [
     "thunk",
     "dethunk",
@@ -23,6 +27,10 @@
     ]
   },
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rjmk/dethunking-compose/issues"
+  },
+  "homepage": "https://github.com/rjmk/dethunking-compose#readme",
   "devDependencies": {
     "babel-cli": "^6.2.0",
     "babel-plugin-transform-es2015-arrow-functions": "^6.1.18",
