@@ -1,5 +1,5 @@
 {
-  "name": "dethunking_compose",
+  "name": "dethunking-compose",
   "version": "0.0.0",
   "description": "Lazy evaluation + compose",
   "main": "index.js",
