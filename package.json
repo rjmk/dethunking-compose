@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/rjmk/dethunking-compose#readme",
   "devDependencies": {
-    "babel-cli": "^6.2.0",
+    "babel-core": "^6.2.1",
     "babel-plugin-transform-es2015-arrow-functions": "^6.1.18",
     "babel-plugin-transform-es2015-parameters": "^6.1.18",
     "babel-plugin-transform-es2015-spread": "^6.1.18",
