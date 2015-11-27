@@ -7,12 +7,13 @@ var pipe = compose.pipe
 test('"composing" only one function works fine', function (t) {
 
   t.plan(1)
-  var composed_pass = compose(
-      () => id
-  )
+  var composed_pass = compose(function () {
+    return id
+  })
 
-  var id = x =>
-      x
+  var id = function (x) {
+    return x
+  }
 
   var actual = composed_pass('ok')
   var expected = 'ok'
@@ -23,18 +24,23 @@ test('"composing" only one function works fine', function (t) {
 test('composing multiple functions work well', function (t) {
 
   t.plan(1)
-  var composed_pass = compose(
-    () => id
-    , () => id
-    , () => to_upper
-    , () => id
-  )
+  var composed_pass = compose(function () {
+    return id
+  }, function () {
+    return id
+  }, function () {
+    return to_upper
+  }, function () {
+    return id
+  })
 
-  var id = x =>
-    x
+  var id = function (x) {
+    return x
+  }
 
-  var to_upper = str =>
-    str.toUpperCase()
+  var to_upper = function (str) {
+    return str.toUpperCase()
+  }
 
   var actual = composed_pass('ok')
   var expected = 'OK'
@@ -45,38 +51,45 @@ test('composing multiple functions work well', function (t) {
 test('a composed function has a good stringification', function (t) {
 
   t.plan(1)
-  var composed_pass = compose(
-    () => id
-    , () => id
-    , () => id
-  )
+  var composed_pass = compose(function () {
+    return id
+  }, function () {
+    return id
+  }, function () {
+    return id
+  })
 
-  var id = x =>
-      x === 'ok'
+  var id = function (x) {
+    return x
+  }
 
   var test_string = id.toString()
 
   t.equal(
-      composed_pass.toString()
-      , 'compose(' + [test_string, test_string, test_string].join(', ') + ')'
-      , 'composed function stringifies nicely'
+      composed_pass.toString(),
+      'compose(' + [test_string, test_string, test_string].join(', ') + ')',
+      'composed function stringifies nicely'
   )
 })
 
 test('a piped multifunction thing works', function (t) {
 
   t.plan(1)
-  var piped_pass = pipe(
-    () => id
-    , () => to_upper
-    , () => id
-  )
+  var piped_pass = pipe(function () {
+    return id
+  }, function () {
+    return to_upper
+  }, function () {
+    return id
+  })
 
-  var id = x =>
-    x
+  var id = function (x) {
+    return x
+  }
 
-  var to_upper = str =>
-    str.toUpperCase()
+  var to_upper = function (str) {
+    return str.toUpperCase()
+  }
 
   var actual = piped_pass('ok')
   var expected = 'OK'
@@ -87,43 +100,46 @@ test('a piped multifunction thing works', function (t) {
 test('piped functions stringify nicely', function (t) {
 
   t.plan(1)
-  var piped_pass = pipe(
-    () => id
-    , () => id
-    , () => id
-  )
+  var piped_pass = pipe(function () {
+    return id
+  }, function () {
+    return id
+  }, function () {
+    return id
+  })
 
-  var id = x =>
-      x
+  var id = function (x) {
+    return x
+  }
 
   var test_string = id.toString()
 
   t.equal(
-      piped_pass.toString()
-      , 'pipe(' + [test_string, test_string, test_string].join(', ') + ')'
-      , 'piped function stringifies nicely'
+      piped_pass.toString(),
+      'pipe(' + [test_string, test_string, test_string].join(', ') + ')',
+      'piped function stringifies nicely'
   )
 })
 
 test('better error throwing', function (t) {
 
   t.plan(1)
-  var piped_pass = pipe(
-    () => id
-    , () => id(3)
-    , () => id
-  )
+  var piped_pass = pipe(function () {
+    return id
+  }, function () {
+    return id(3)
+  }, function () {
+    return id
+  })
 
-  var id = x =>
-      x
+  var id = function (x) {
+    return x
+  }
 
   try {
     piped_pass(3)
   } catch (e) {
-    t.equal(
-      e.message,
-      piped_pass.toString() + ' blew up on 3',
-      'correct message'
-    )
+    t.equal(e.message, piped_pass.toString() + ' blew up on 3', 'correct error')
   }
 })
+
