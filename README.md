@@ -2,7 +2,7 @@
 
 [Function composition](https://en.wikipedia.org/wiki/Function composition)
 allows the writing of declarative functional code.
-I like to pair this style of coding with large functions at the top of a file
+I like to pair this style of coding with the main functions at the top of a file
 followed by the definitions of the smaller functions out of which it's composed.
 
 Unfortunately, if you are writing in javascript and using function expressions
