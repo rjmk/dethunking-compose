@@ -30,19 +30,37 @@ the low affordance for writing thunks provided by ES6 arrow functions.
 var compose = require('dethunk-compose')
 
 var triple_add_3 = module.exports = compose(
-    () => add_2
-    , () => add_1
-    , () => triple
+    () => add_2,
+    () => add_1,
+    () => triple
 )
 
 var add_2 = compose(
+    () => add_1,
     () => add_1
-    , () => add_1
 )
 
 var add_1 = x => x + 1
 
 var triple = x => x * 3
+```
+
+Compare to this attempt with a normal compose module,
+which would throw.
+
+```js
+var compose = require(/* Normal compose module */)
+
+var add_2 = compose(
+    add_1,
+    add_1
+)
+
+var add_1 = x => x + 1
+
+add_2(4)
+
+// undefined is not a function
 ```
 
 ## Pipe
@@ -53,9 +71,9 @@ var pipe = require('dethunk-compose).pipe
 
 ```js
 var triple_add_3 = module.exports = pipe(
-    () => triple
-    , () => add_1
-    , () => add_2
+    () => triple,
+    () => add_1,
+    () => add_2
 )
 
 ...
