@@ -67,9 +67,9 @@ add_2(4)
 
 If you prefer to compose left-to-right, you can use the pipe API.
 
+```js
 var pipe = require('dethunk-compose).pipe
 
-```js
 var triple_add_3 = module.exports = pipe(
     () => triple,
     () => add_1,
